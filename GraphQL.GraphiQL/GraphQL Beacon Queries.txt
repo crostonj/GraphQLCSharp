@@ -1,0 +1,76 @@
+{                  
+   borrower(ssn: "999999485") { 
+     firstname 
+     lastname 
+   } 
+}
+
+{                  
+   borrower(ssn: "999999485") { 
+    firstname
+    lastname 
+    addresses{
+      isactive
+      isvalid
+      addressline1
+    }
+   } 
+}
+
+{                  
+   borrower(ssn: "999999485") { 
+    firstname
+    lastname
+    activities{
+      id
+      activityname
+      activitydescription
+      status
+      requestdate
+      completedate
+    }    
+   } 
+}
+
+{
+  __type(name: "Borrower") {
+    name
+    fields {
+      name
+      description      
+      type {
+        name        
+        kind        
+      }
+    }
+  }
+}
+
+{
+  __schema {
+    mutationType {
+      name 
+      fields {
+        name
+        description
+        args{
+          name          
+          type {
+            kind
+            name
+            
+          }
+        }
+      }
+    }
+  }
+}
+
+mutation updateBorrower {
+  addHistoryNote(ssn: "999999485", notetype: "150", notetext: "new note")
+    {
+      ssn
+      firstname
+    }
+}
+
